@@ -1,22 +1,40 @@
-## Installing Dependencies
+## Setup
 
-###  npm install express sequezlize mocha 
+### Installing Dependencies
 
-## DataBase Setup
-### To setup the database make sure postgresql is installed and make a database or whatever you like 
+```npm install express sequelize mocha```
 
-### run the migrations using `npx sequelize-cli db:migrate`
+### Setting Up Database
 
-### see the users, project and task using `npx sequelize-cli db:seed:all`
+Follow the postgresql guidelines, [download](https://www.postgresql.org/download/) an install postgres v9.6.
 
-## Run
+**Create Database**
 
-### TO run it use `node server.js` and you are all good to start making request 
+```bash
+psql -U postgres
+> create database roofing;
+> \q
+```
+and assign user and password to it as per your choice
 
-## Testing
-### install mocha , chai and expect.js to run tests using `npm install chai mocha expect.js`
+**Run Migrations**
 
-### To run test- `npm test`
+```bash
+npx sequelize db:migrate
+```
 
-#### Code Coverage for my tests are 70%  
+### Running Development Server
 
+```node server.js
+```
+
+Open [http://localhost:5343](http://localhost:5343) with your browser to see the result and start posting query through `Postman` or through your browser.
+
+### Seed Users
+
+```bash
+npx sequelize-cli db:seed:all
+```
+### Testing
+
+My code coverage is 70% and you can run the test using `npm test`
