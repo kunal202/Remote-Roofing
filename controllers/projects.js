@@ -1,4 +1,4 @@
-const { Projects } = require('../models/index').models
+const { Projects } = require('../models').models
 
 async function createProject(body, name, status) {
     if (!name) {
@@ -21,18 +21,6 @@ async function createProject(body, name, status) {
     return project
 }
 
-async function getAllProjects() {
-    const projects = await Projects.findAll({
-        attributes: [
-            'body', 'name', 'status'
-        ]
-    })
-
-    return projects;
-}
-
-
 module.exports = {
-    getAllProjects,
     createProject
 }

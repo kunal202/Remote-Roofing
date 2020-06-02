@@ -1,6 +1,6 @@
 const { Router } = require('express')
-const { getAllUsers, createUser } = require('../../controllers/users')
-const { Users } = require('../../models/index').models
+const {createUser } = require('../../controllers/users')
+const { Users } = require('../../models').models
 const route = Router()
 const Sequelize = require('sequelize')
 

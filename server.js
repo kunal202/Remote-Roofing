@@ -13,3 +13,7 @@ models.sequelize.sync().then(() => {
         console.log('Server Started')
     })
 })
+
+module.exports = {
+    app
+}

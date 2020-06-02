@@ -1,18 +1,19 @@
+'use strict';
 module.exports = (sequelize, DataTypes) => {
     const Tasks = sequelize.define('tasks', {
-        "name": {
+        name: {
             type: DataTypes.STRING(100),
             primaryKey: true
         },
-        "description": {
+        description: {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        "score": {
+        score: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        "status": {
+        status: {
             type: DataTypes.ENUM(
                 'active',
                 'inactive',
@@ -20,16 +21,17 @@ module.exports = (sequelize, DataTypes) => {
                 'completed'
             )
         },
+
     })
 
 
     Tasks.associate = (models) => {
         Tasks.belongsTo(models.Users, {
-            foreignKey: 'userId'
+            foreignKey: 'userId',
+
         })
-        Tasks.belongsToMany(models.Projects, {
-            through: 'assignes',
-            foreignKey: 'projectId'
+        Tasks.belongsTo(models.Projects, {
+            foreignKey: 'projectId',
         })
     }
 

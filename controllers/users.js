@@ -1,14 +1,4 @@
-const { Users } = require('../models/index').models
-
-async function getAllUsers() {
-    const User = await Users.findAll({
-        attributes: [
-            'email','name', 'surname'
-        ]
-    })
-    return User
-}
-
+const { Users } = require('../models').models
 
 async function createUser(email, name , surname) {
     if (!name) {
@@ -33,6 +23,5 @@ async function createUser(email, name , surname) {
 }
 
 module.exports = {
-    getAllUsers,
     createUser
 }

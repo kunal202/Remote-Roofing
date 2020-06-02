@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "kunal",
+    "password": "Wewillrockit@2000",
+    "database": "roofing",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "kunal",
+    "password": "Wewillrockit@2000",
+    "database": "roofing",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "kunal",
+    "password": "Wewillrockit@2000",
+    "database": "roofing",
+    "host": "127.0.0.1",
+    "dialect": "postgresql",
+    "operatorsAliases": false
+  }
+}

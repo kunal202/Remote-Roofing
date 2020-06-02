@@ -1,6 +1,6 @@
 const { Router } = require('express')
-const { createTask, getAllTasks } = require('../../controllers/tasks')
-const { Tasks } = require('../../models/index').models
+const { createTask } = require('../../controllers/tasks')
+const { Tasks } = require('../../models').models
 const route = Router()
 const Sequelize = require('sequelize')
 
@@ -10,12 +10,35 @@ route.get('/', async (req, res) => {
 
     const { name = '', description = '', score = '', status = '' } = req.query
 
-    const whereClause = {
-        name: { [Sequelize.Op.iLike]: `%${name}%` },
-        description: { [Sequelize.Op.iLike]: `%${description}%` },
-        score: score,
-        status: status
+    if (score.length == 0 || status.length == 0) {
+        if (score.length == 0 && status.length == 0) {
+            var whereClause = {
+                name: { [Sequelize.Op.iLike]: `%${name}%` },
+                description: { [Sequelize.Op.iLike]: `%${description}%` },
+            }
+        } else if (status.length == 0) {
+            var whereClause = {
+                name: { [Sequelize.Op.iLike]: `%${name}%` },
+                description: { [Sequelize.Op.iLike]: `%${description}%` },
+                score: { [Sequelize.Op.gt]: `${score}` },
+            }
+        } else {
+            var whereClause = {
+                name: { [Sequelize.Op.iLike]: `%${name}%` },
+                description: { [Sequelize.Op.iLike]: `%${description}%` },
+                status: `${status}`,
+            }
+        }
     }
+    else {
+        var whereClause = {
+            name: { [Sequelize.Op.iLike]: `%${name}%` },
+            description: { [Sequelize.Op.iLike]: `%${description}%` },
+            score: { [Sequelize.Op.gt]: `${score}` },
+            status: `${status}`
+        }
+    }
+
     const tasks = await Tasks.findAll({
         where: whereClause
     })

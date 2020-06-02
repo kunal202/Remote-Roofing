@@ -1,15 +1,4 @@
-const { Tasks } = require('../models/index').models
-
-async function getAllTasks() {
-    const tasks = await Tasks.findAll({
-        attributes: [
-            'description', 'name', 'score', 'status'
-        ]
-    })
-
-    return tasks;
-}
-
+const { Tasks } = require('../models').models
 
 async function createTask(name, description, score, status) {
     if (!name) {
@@ -34,6 +23,5 @@ async function createTask(name, description, score, status) {
 }
 
 module.exports = {
-    getAllTasks,
     createTask
 }

@@ -1,14 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
     const Project = sequelize.define('project', {
-        "name": {
+
+        name: {
             type: DataTypes.STRING(100),
             primaryKey: true
         },
-        "body": {
+        body: {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        "status": {
+        status: {
             type: DataTypes.ENUM(
                 'active',
                 'inactive',
@@ -16,15 +17,17 @@ module.exports = (sequelize, DataTypes) => {
                 'completed'
             )
         },
+
     })
 
     Project.associate = (models) => {
         Project.belongsTo(models.Users, {
             foreignKey: 'userId',
+
         })
-        Project.belongsToMany(models.Tasks, {
-            through: 'assignes',
-            foreignKey: 'taskId'
+        Project.hasMany(models.Tasks, {
+            foreignKey: 'projectId',
+
         })
     }
     return Project;

@@ -1,20 +1,30 @@
-module.exports= (sequelize, DataTypes) => {
+`use strict`
+module.exports = (sequelize, DataTypes) => {
     const Users = sequelize.define('user', {
-        "email": {
+        email: {
             type: DataTypes.STRING,
             unique: true,
             allowNull: false
         },
-        "name": {
+        name: {
             type: DataTypes.STRING,
             primaryKey: true,
             allowNull: false
         },
-        "surname": {
+        surname: {
             type: DataTypes.STRING
         }
     })
 
-    
+    Users.associate = (models) => {
+        Users.hasMany(models.Projects, {
+            foreignKey: 'userId',
+        })
+        Users.hasMany(models.Tasks, {
+            foreignKey: 'userId'
+        })
+    }
+
+
     return Users;
 }
