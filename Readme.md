@@ -23,17 +23,17 @@ and assign user and password to it as per your choice
 npx sequelize db:migrate
 ```
 
-### Running Development Server
-
-```node server.js
-```
-
-Open [http://localhost:5343](http://localhost:5343) with your browser to see the result and start posting query through `Postman` or through your browser.
-
 ### Seed Users
 
 ```bash
 npx sequelize-cli db:seed:all
+```
+
+### Running Development Server
+
+Run ```node server.js```
+```bash
+Open [http://localhost:5343](http://localhost:5343) with your browser to see the result and start posting query through `Postman` or through your browser.
 ```
 ### Testing
 
