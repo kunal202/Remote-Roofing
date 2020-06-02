@@ -1,8 +1,6 @@
 # Installing Dependencies
 
-### 1. npm install express sequezlize mocha 
-
-### 2. npm install expect.js
+### expressjs, sequelize, mocha =>  npm install express sequezlize mocha 
 
 # DataBase Setup
 ### To setup the database make sure postgresql is installed and make a database or whatever you like 
@@ -20,5 +18,5 @@
 
 ### To run test- `npm test`
 
-#### Code Coverage for my tests is 70%  
+#### Code Coverage for my tests are 70%  
 
